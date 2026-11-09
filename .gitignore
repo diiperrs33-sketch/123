@@ -1,7 +1,12 @@
-bin/
-obj/
+# .NET / MAUI
+**/bin/
+**/obj/
 .vs/
-.vscode/
+.idea/
+*.user
+*.suo
 .DS_Store
-Evidencias/*.zip
-Evidencias/*.png
+# Gerados na execução
+*.apk
+*.aab
+*.ipa

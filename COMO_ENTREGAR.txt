@@ -1,5 +1,0 @@
-Agenda 13 - Hotel Aurora
-
-Abra e execute o projeto no .NET MAUI.
-Tire uma captura real da aba Sobre com o aplicativo aberto.
-Compacte a captura em ZIP e envie ao professor junto do link deste repositório.
