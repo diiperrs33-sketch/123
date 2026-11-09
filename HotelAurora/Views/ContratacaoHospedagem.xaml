@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelAurora.Views.ContratacaoHospedagem"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="{StaticResource Canvas}"
+             Title="Reserva">
+  <ScrollView>
+    <VerticalStackLayout Padding="28,26,28,30" Spacing="18" MaximumWidthRequest="660" HorizontalOptions="Fill">
+      <Label Text="Hotel Aurora" FontSize="24" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
+      <BoxView HeightRequest="1" Color="{StaticResource Outline}" />
+      <Label Text="Nova reserva" FontSize="20" FontAttributes="Bold" Margin="0,2,0,0" />
+      <Label Text="Hóspedes" FontSize="15" FontAttributes="Bold" Margin="0,5,0,0" />
+      <Grid ColumnDefinitions="*,36,125" RowDefinitions="Auto,Auto" RowSpacing="13" ColumnSpacing="5">
+        <Label Grid.Row="0" Text="Adultos" FontSize="15" VerticalTextAlignment="Center" />
+        <Label Grid.Row="0" Grid.Column="1" Text="{Binding Value, Source={x:Reference stpAdultos}, StringFormat='{0:F0}'}"
+               FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+        <Stepper Grid.Row="0" Grid.Column="2" x:Name="stpAdultos" Minimum="1" Maximum="8" Increment="1" Value="2" ValueChanged="OnQuantidadeAlterada" HorizontalOptions="End" />
+        <Label Grid.Row="1" Text="Crianças" FontSize="15" VerticalTextAlignment="Center" />
+        <Label Grid.Row="1" Grid.Column="1" Text="{Binding Value, Source={x:Reference stpCriancas}, StringFormat='{0:F0}'}"
+               FontSize="15" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+        <Stepper Grid.Row="1" Grid.Column="2" x:Name="stpCriancas" Minimum="0" Maximum="5" Increment="1" Value="0" ValueChanged="OnQuantidadeAlterada" HorizontalOptions="End" />
+      </Grid>
+      <BoxView HeightRequest="1" Color="{StaticResource Outline}" />
+      <Label Text="Quarto" FontSize="15" FontAttributes="Bold" />
+      <Border Stroke="{StaticResource Outline}" StrokeShape="RoundRectangle 3" Padding="8,0">
+        <Picker x:Name="pckQuarto" Title="Selecione" FontSize="15" TextColor="{StaticResource Ink}" SelectedIndexChanged="OnDadosAlterados" />
+      </Border>
+      <Label x:Name="lblCapacidade" Text="Capacidade do quarto" FontSize="13" TextColor="{StaticResource Muted}" />
+      <Label Text="Período" FontSize="15" FontAttributes="Bold" Margin="0,5,0,0" />
+      <Grid ColumnDefinitions="*,*" ColumnSpacing="16">
+        <VerticalStackLayout Spacing="6">
+          <Label Text="Entrada" FontSize="14" />
+          <Border Stroke="{StaticResource Outline}" StrokeShape="RoundRectangle 3" Padding="4,0">
+            <DatePicker x:Name="dtpCheckin" Format="dd/MM/yyyy" FontSize="14" TextColor="{StaticResource Ink}" DateSelected="OnCheckinAlterado" />
+          </Border>
+        </VerticalStackLayout>
+        <VerticalStackLayout Grid.Column="1" Spacing="6">
+          <Label Text="Saída" FontSize="14" />
+          <Border Stroke="{StaticResource Outline}" StrokeShape="RoundRectangle 3" Padding="4,0">
+            <DatePicker x:Name="dtpCheckout" Format="dd/MM/yyyy" FontSize="14" TextColor="{StaticResource Ink}" DateSelected="OnDadosAlterados" />
+          </Border>
+        </VerticalStackLayout>
+      </Grid>
+      <BoxView HeightRequest="1" Color="{StaticResource Outline}" />
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+        <Label Text="Valor previsto" FontSize="14" VerticalTextAlignment="Center" />
+        <Label x:Name="lblPrevia" Grid.Column="1" Text="-" FontSize="16" FontAttributes="Bold"
+               TextColor="{StaticResource Accent}" HorizontalTextAlignment="End" VerticalTextAlignment="Center" />
+      </Grid>
+      <Button Text="Continuar" Clicked="OnAvancarClicked" Margin="0,12,0,0" />
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
